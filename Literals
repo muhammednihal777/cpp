@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+ 
+    int age = 35; // An integer literal
+    cout << "Age: " << age << endl;
+    return 0;
+}
