@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+// defining class
+class Student {
+public:
+    string name;
+};
+
+int main()
+{
+
+    // creating object
+    Student student1;
+    // assigning member some value
+    student1.name = "Rahul";
+
+    cout << "student1.name: " << student1.name;
+
+    return 0;
+}
