@@ -1,0 +1,4 @@
+class base {
+    public:
+        base() { cout << "This is a constructor"; }
+}
