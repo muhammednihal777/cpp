@@ -1,0 +1,28 @@
+#include<stdio.h> 
+  
+// Symbolic size 
+#define SIZE_OF_ARRAY (4) 
+  
+// pointer to array of (SIZE_OF_ARRAY) integers 
+typedef int *(*p_array_t)[SIZE_OF_ARRAY]; 
+  
+// Declaration : compiler should throw error 
+// if not matched with definition 
+int *(*function(int *arg))[4]; 
+  
+// Definition  : 'function' returning pointer to an 
+// array of integer pointers 
+p_array_t function(int *arg) 
+{ 
+   // array of integer pointers 
+   static int *arr[SIZE_OF_ARRAY] = {NULL}; 
+  
+   // return this 
+   p_array_t pRet = &arr; 
+  
+   return pRet; 
+} 
+  
+int main() 
+{           
+} 
