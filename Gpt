@@ -1,0 +1,113 @@
+// C++ program to implement 
+// the above approach 
+  
+#include <bits/stdc++.h> 
+using namespace std; 
+  
+// Structure of a tree node 
+struct TreeNode { 
+      
+    // Stores data value of a node 
+    int data; 
+  
+    // Stores left subtree 
+    // of a tree node 
+    TreeNode* left; 
+  
+    // Stores right subtree 
+    // of a tree node 
+    TreeNode* right; 
+  
+    // Initialization of  
+    // a tree node 
+    TreeNode(int val)  
+    { 
+        // Update data 
+        data = val; 
+  
+        // Update left and right 
+        left = right = NULL; 
+    } 
+}; 
+  
+// Function to check if a binary tree 
+// is binary search tree or not 
+bool checkTreeIsBST(TreeNode *root)  
+{ 
+    // Stores root node and left 
+   // subtree of each node 
+    stack<TreeNode* > Stack; 
+      
+    // Stores previous visited node 
+    TreeNode* prev = NULL; 
+      
+    // Traverse the binary tree 
+    while (!Stack.empty() || 
+               root != NULL) { 
+  
+        // Traverse left subtree 
+        while (root != NULL) { 
+  
+            // Insert root into Stack 
+            Stack.push(root); 
+  
+            // Update root 
+            root = root->left; 
+        } 
+  
+        // Stores top element of Stack 
+        root = Stack.top(); 
+  
+        // Remove the top element of Stack 
+        Stack.pop(); 
+  
+        // If data value of root node less 
+        // than data value of left subtree 
+        if(prev != NULL && 
+               root->data <= prev->data) { 
+            return false; 
+        } 
+  
+        // Update prev 
+        prev = root; 
+  
+        // Traverse right subtree 
+        // of the tree 
+        root = root->right; 
+    } 
+    return true; 
+} 
+  
+  
+// Driver Code 
+int main() 
+{ 
+      /*   
+             9 
+            / \ 
+           6   10 
+          / \   \ 
+         4   7   11 
+        / \   \ 
+       3  5   8 
+         
+     */
+      
+    // Initialize binary tree 
+    TreeNode *root = new TreeNode(9); 
+    root->left = new TreeNode(6); 
+    root->right = new TreeNode(10); 
+    root->left->left = new TreeNode(4); 
+    root->left->right = new TreeNode(7); 
+    root->right->right = new TreeNode(11); 
+    root->left->left->left = new TreeNode(3); 
+    root->left->left->right = new TreeNode(5); 
+    root->left->right->right = new TreeNode(8); 
+      
+    if (checkTreeIsBST(root)) { 
+        cout<<"YES"; 
+    } 
+    else { 
+        cout<<"NO"; 
+    } 
+}
